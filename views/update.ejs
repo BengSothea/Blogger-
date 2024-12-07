@@ -1,0 +1,29 @@
+
+<head>
+  <%- include("partials/header.ejs") %>
+</head>
+<div class="form-container">
+  <div class="form">
+    <form action="/update/<%=post.id%>" method="POST">
+      <div class="form-control">
+        <label for="image" >Enter url image</label>
+        <input type="url" id="image-url" class="form-control" value="<%= post.image %>" placeholder="url image" name="image" required>
+      </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter Title</label>
+          <input type="title" class="form-control" value="<%= post.title %>" placeholder="Title" name="title" required>
+        </div>
+        <div class="form-group" >
+          <label for="exampleInputPassword1">Write your post</label>
+          <input type="text" class="form-control" class="write-post" value="<%= post.text %>" id="exampleInputPassword1" placeholder="text" name="text" required>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="_method" value="PUT">
+            <button type="submit" class="btn btn-primary" value="Submit" ">post</button>
+        </div>
+    </form>
+  </div>
+</div>
+<div class="footer">
+  <%- include("partials/footer.ejs") %>
+</div>

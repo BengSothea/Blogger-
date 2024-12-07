@@ -1,0 +1,32 @@
+
+<head>
+     <%- include("partials/header.ejs") %>
+</head>
+<body>
+   <div class = "flex-container" class="container">
+     <% if(locals.posts){ %> <!-- the connect 1 -->
+         <% posts.forEach(post =>{ %>
+       <div class="card" style="width: 18rem;" class="col-lag-4 col-sm-12">
+          <div class="card-body">
+            <img src="<%= post.image %>">
+             <h2><%= post.title %></h2>
+             <p><%= post.text %></p>
+            <div class="btn-2">
+              <form action="/delete/<%=post.id%>" method="POST"> <!-- The reason we put method to post because most of browser only support POST AND GET Not DELETE -->
+              <input type="hidden" name="_method" value="DELETE"> <!--But can use hidden input type that mean user can interact with it ,and will receive a POST request with a _method parameter set to DELETE, which allows the server to interpret it as a DELETE request.-->
+              <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+              <form action="/update/<%= post.id %>" method="GET">
+              <button type="submit" class="btn btn-primary" >Update</button>
+              </form>
+            </div>
+          </div>
+       </div>
+         <%})%>
+     <%}%>
+   </div>
+   <div class="footer">
+    <%- include("partials/footer.ejs") %>
+  </div>
+</body>
+ 
